@@ -1,3 +1,3 @@
-# API for Composable UI PoC
+# Downstream API for Composable UI PoC
 
-Cf. <https://github.com/ondfisk/ComposableUI.Root> for details.
+See <https://github.com/ondfisk/ComposableUI.Root> for details.
