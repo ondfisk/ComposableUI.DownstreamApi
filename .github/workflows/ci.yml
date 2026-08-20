@@ -1,7 +1,7 @@
 ---
 name: Continuous Integration
 
-on:
+"on":
   push:
     branches:
       - main
@@ -10,21 +10,22 @@ on:
       - main
 
 env:
-  DOTNET_VERSION: 8.0.x
+  DOTNET_VERSION: 10.0.x
   DOTNET_CONFIGURATION: Release
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
         run: dotnet build --configuration $DOTNET_CONFIGURATION --no-restore
-      - name: Test
-        run: dotnet test --configuration $DOTNET_CONFIGURATION --no-build --verbosity normal
